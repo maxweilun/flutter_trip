@@ -7,7 +7,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const MAX_SCROLL_HEIGHT = ˚100;
+  static const MAX_SCROLL_HEIGHT = 100;
   final _imageItems = [
     "https://dimg04.c-ctrip.com/images/zg05170000013cm17FDEB.jpg",
     "https://dimg04.c-ctrip.com/images/zg0e1700000134c1zC91B.jpg",
