@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_trip/dao/home_dao.dart';
+import 'package:flutter_trip/model/home_model.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,12 +10,23 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static const MAX_SCROLL_HEIGHT = 100;
+  double _appBarAlpha = 0;
   final _imageItems = [
     "https://dimg04.c-ctrip.com/images/zg05170000013cm17FDEB.jpg",
     "https://dimg04.c-ctrip.com/images/zg0e1700000134c1zC91B.jpg",
     "https://dimg04.c-ctrip.com/images/zg0d180000013l5cgA5FF.jpg"
   ];
-  double _appBarAlpha = 0;
+
+  @override
+  initState() {
+    _loadData();
+    super.initState();
+  }
+
+  _loadData() async {
+    HomeModel homeModel = await HomeDao.fetch();
+    print(homeModel);
+  }
 
   _onScroll(offset) {
     double alpha = offset / MAX_SCROLL_HEIGHT;
@@ -67,9 +80,9 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(color: Colors.white),
                   child: Center(
                       child: Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Text("首页"),
-                  )),
+                        padding: EdgeInsets.only(top: 20),
+                        child: Text("首页"),
+                      )),
                 ),
               )
             ])));
